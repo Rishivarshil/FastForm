@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Admin</title>
+		<title>Admin- Fast Form</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='https://fonts.googleapis.com/css?family=Raleway:300,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link href='https://fonts.googleapis.com/css?family=Raleway:300,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="style.css" type="text/css" media="all">
+		<script src="modernizr.js"></script>
+	</head>
+	<style>
+				* {box-sizing: border-box;}
+
+		body {
+		margin: 0;
+		font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.topnav {
+		overflow: hidden;
+		background-color: #e9e9e9;
+		}
+
+		.topnav a {
+		float: left;
+		display: block;
+		color: black;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+		}
+
+		.topnav a:hover {
+		background-color: #ddd;
+		color: black;
+		}
+
+		.topnav a.active {
+		background-color: #2196F3;
+		color: white;
+		}
+
+		.topnav .search-container {
+		float: right;
+		}
+
+		.topnav input[type=text] {
+		padding: 6px;
+		margin-top: 8px;
+		font-size: 17px;
+		border: none;
+		}
+
+		.topnav .search-container button {
+		float: right;
+		padding: 6px 10px;
+		margin-top: 8px;
+		margin-right: 16px;
+		background: #ddd;
+		font-size: 17px;
+		border: none;
+		cursor: pointer;
+		}
+
+		.topnav .search-container button:hover {
+		background: #ccc;
+		}
+
+		@media screen and (max-width: 600px) {
+		.topnav .search-container {
+			float: none;
+		}
+		.topnav a, .topnav input[type=text], .topnav .search-container button {
+			float: none;
+			display: block;
+			text-align: left;
+			width: 100%;
+			margin: 0;
+			padding: 14px;
+		}
+		.topnav input[type=text] {
+			border: 1px solid #ccc;  
+		}
+		}
+		table, th, td {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		}
+		th, td {
+		  padding: 30px;
+		}
+		th {
+		  text-align: left;
+		}
+	</style>
+	<body>
+		
+		<div class="w3-top">
+			<div class="w3-bar w3-white w3-wide w3-padding w3-card">
+			  <a href="C:\Users\nelak\Desktop\EHack for Charity\userwebsite.html" class="w3-bar-item w3-button"><b>Fast</b> Form</a>
+			  <!-- Float links to the right. Hide them on small screens -->
+			  <div class="w3-right w3-hide-small">
+				<a href="C:\Users\nelak\Desktop\EHack for Charity\userwebsite.html" class="w3-bar-item w3-button">Home</a>
+			  </div>
+			</div>
+		  </div>
+		  
+		<div id="map" class="map desk-two-forth"></div>
+		<div class="map-legend desk-fourth-forth">
+			<h4 class="subheader">Search</h4>
+        	  <input type="text" placeholder="Search for name, address, center, etc..." ng-model="searchText"> 
+			<div class="location location-2">
+				
+				<table width="100%" ng-table="tableParams" show-filter="true">
+					<thead>
+					  <tr>
+						<th></th>
+						<th>Date</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>Phone</th>
+						<th>Center</th>
+						<th>ETA</th>              
+						<th>Assistance Needed</th>
+						<th>Kids and Pets</th>
+					  </tr>
+					</thead>
+					<tbody>            
+					  <tr ng-repeat="response in responses | filter:searchText">
+						<td><button onclick="pdf.print();" class="button">Print</button></td>
+						<td>8/15/2020</td>              
+						<td>Diana Williams</td>
+						<td>wells@gmail.com</td>
+						<td>189 Thirty Avenue</td>              
+						<td>555-555-5555</td>
+						<td>DAC</td>
+						<td>13 min</td>
+						<td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Medical</td>
+						<td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+					  </tr>            
+					</tbody>
+					<tbody>            
+					  <tr ng-repeat="response in responses | filter:searchText">
+						<td><button onclick="pdf.print();" class="button">Print</button></td>
+						<td>8/15/2020</td>              
+						<td>John Doe</td>
+						<td>suesy@gmail.com</td>
+						<td>123 Main St</td>              
+						<td>999-999-9999</td>
+						<td>DAC</td>
+						<td>20 min</td>
+						<td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Food</td>
+						<td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+					  </tr>            
+					</tbody>
+					<tbody>            
+						<tr ng-repeat="response in responses | filter:searchText">
+						  <td><button onclick="pdf.print();" class="button">Print</button></td>
+						  <td>8/15/2020</td>              
+						  <td>Samuel Jackson</td>
+						  <td>jackson@gmail.com</td>
+						  <td>128 Main Square</td>              
+						  <td>111-111-1111</td>
+						  <td>DAC</td>
+						  <td>44 min</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Medical</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+						</tr>            
+					  </tbody>
+					  <tbody>            
+						<tr ng-repeat="response in responses | filter:searchText">
+						  <td><button onclick="pdf.print();" class="button">Print</button></td>
+						  <td>8/15/2020</td>              
+						  <td>Samuel Jackson</td>
+						  <td>jackson@gmail.com</td>
+						  <td>128 Main Square</td>              
+						  <td>111-111-1111</td>
+						  <td>DAC</td>
+						  <td>44 min</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Food</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+						</tr>            
+					  </tbody>
+					  <tbody>            
+						<tr ng-repeat="response in responses | filter:searchText">
+						  <td><button onclick="pdf.print();" class="button">Print</button></td>
+						  <td>8/15/2020</td>              
+						  <td>Samuel Jackson</td>
+						  <td>jackson@gmail.com</td>
+						  <td>128 Main Square</td>              
+						  <td>111-111-1111</td>
+						  <td>DAC</td>
+						  <td>44 min</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Food</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+						</tr>            
+					  </tbody>
+					  <tbody>            
+						<tr ng-repeat="response in responses | filter:searchText">
+						  <td><button onclick="pdf.print();" class="button">Print</button></td>
+						  <td>8/15/2020</td>              
+						  <td>Samuel Jackson</td>
+						  <td>jackson@gmail.com</td>
+						  <td>128 Main Square</td>              
+						  <td>111-111-1111</td>
+						  <td>DAC</td>
+						  <td>44 min</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Medical</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+						</tr>            
+					  </tbody>
+					  <tbody>            
+						<tr ng-repeat="response in responses | filter:searchText">
+						  <td><button onclick="pdf.print();" class="button">Print</button></td>
+						  <td>8/15/2020</td>              
+						  <td>Samuel Jackson</td>
+						  <td>jackson@gmail.com</td>
+						  <td>128 Main Square</td>              
+						  <td>111-111-1111</td>
+						  <td>DAC</td>
+						  <td>44 min</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Food</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+						</tr>            
+					  </tbody>
+					  <tbody>            
+						<tr ng-repeat="response in responses | filter:searchText">
+						  <td><button onclick="pdf.print();" class="button">Print</button></td>
+						  <td>8/15/2020</td>              
+						  <td>Samuel Jackson</td>
+						  <td>jackson@gmail.com</td>
+						  <td>128 Main Square</td>              
+						  <td>111-111-1111</td>
+						  <td>DAC</td>
+						  <td>44 min</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915095_choice')" class="help-needed" ng-click="toggleSave($event)">Medical</td>
+						  <td ng-bind-html="getAnswers(response.answers,'list_915092_choice')">No</td>
+						</tr>            
+					  </tbody>
+				  </table>
+			</div>
+			
+		<script>
+			var map,
+				desktopScreen = Modernizr.mq( "only screen and (min-width:1024px)" ),
+				zoom = desktopScreen ? 18 : 17,
+				scrollable = draggable = !Modernizr.hiddenscroll || desktopScreen,
+				isIE11 = !!(navigator.userAgent.match(/Trident/) && navigator.userAgent.match(/rv[ :]11/));
+
+			function initMap() {
+				var myLatLng = {lat: 48.855510, lng: 2.365505};
+				map = new google.maps.Map(document.getElementById('map'), {
+					zoom: zoom,
+					center: myLatLng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					scrollwheel: scrollable,
+					draggable: draggable,
+					styles: [{"stylers": [{ "saturation": -100 }]}],
+				});
+
+				var locations = [
+					{
+						title: 'Health1',
+						position: {lat: 48.856259, lng: 2.365043},
+						icon: {
+							url: isIE11 ? "images/markers/png/Health_5.png" : "images/markers/svg/Health_5.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+
+					},
+					{
+						title: 'Health2',
+						position: {lat: 48.854397, lng: 2.365443},
+						icon: {
+							url: isIE11 ? "images/markers/png/Health_5.png" : "images/markers/svg/Health_5.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+
+					},
+					{
+						title: 'Health3',
+						position: {lat: 48.85534, lng: 2.364543},
+						icon: {
+							url: isIE11 ? "images/markers/png/Health_5.png" : "images/markers/svg/Health_5.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+
+					},
+					{
+						title: 'Health4',
+						position: {lat: 48.85534, lng: 2.369543},
+						icon: {
+							url: isIE11 ? "images/markers/png/Health_5.png" : "images/markers/svg/Health_5.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+
+					},
+					{
+						title: 'Food1',
+						position: {lat: 48.85534, lng: 2.366577},
+						icon: {
+							url: isIE11 ? "images/markers/png/Food_4.png" : "images/markers/svg/Food_4.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+					},	
+					{
+						title: 'Food2',
+						position: {lat: 48.85534, lng: 2.364077},
+						icon: {
+							url: isIE11 ? "images/markers/png/Food_4.png" : "images/markers/svg/Food_4.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+					},	
+					{
+						title: 'Food3',
+						position: {lat: 48.85434, lng: 2.365577},
+						icon: {
+							url: isIE11 ? "images/markers/png/Food_4.png" : "images/markers/svg/Food_4.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+					},	
+					{
+						title: 'Food4',
+						position: {lat: 48.85484, lng: 2.366427},
+						icon: {
+							url: isIE11 ? "images/markers/png/Food_4.png" : "images/markers/svg/Food_4.svg",
+							scaledSize: new google.maps.Size(96, 96)
+						}
+					}	
+											
+				];
+				
+				locations.forEach( function( element, index ){	
+					var marker = new google.maps.Marker({
+						position: element.position,
+						map: map,
+						title: element.title,
+						icon: element.icon,
+					});
+				});	
+			}
+
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfm6J3LKQPpVjjdC6qxk0ErpYEKwChTPc&callback=initMap" async defer></script>
+		<!-- replace the above with <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfm6J3LKQPpVjjdC6qxk0ErpYEKwChTPc&callback=initMap" async defer></script> -->
+		           
+  
+          
+        
+        </div>
+        </div>
+
+        <div id="placeholder" style="display:none;"></div>
+ 
+     
+ 
+    </div>
+  </div>
+	</body>
+</html>
