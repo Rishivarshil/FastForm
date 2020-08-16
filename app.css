@@ -1,0 +1,97 @@
+#maparea{
+	width: 100%;
+	height: 400px;
+}
+
+span.step {
+  background: #000000;
+border-radius: 0.8em;
+-moz-border-radius: 0.8em;
+-webkit-border-radius: 1.8em;
+color: #ffffff;
+display: inline-block;
+font-weight: bold;
+line-height: 2.6em;
+margin-right: 5px;
+text-align: center;
+width: 2.6em;
+font-size: 1.2em;
+}
+
+span.step.done {
+  background: #245a33;
+  color: #ff9595;
+}
+
+.steps .columns {
+	min-height: 200px !important;
+}
+
+.row.full-width {
+    width: 100%;
+    max-width: 100%;
+}
+
+#maparea img {
+	max-width: none;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg);
+  }
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotateX(0deg);
+  }
+  100% {
+    -moz-transform: rotateX(360deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotateX(0deg);
+  }
+  100% {
+    -o-transform: rotateX(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+.help-needed {
+	cursor: pointer;
+}
+.saved {
+  background-color: #00d9ff;  
+  color: #ff0000;
+  -webkit-animation-name: spin;
+  -moz-animation-name: spin;
+  -o-animation-name: spin;
+  animation-name: spin;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+}
+
+.row.header {
+	margin: 0 0 1em;
+}
+
+.f-dropdown{
+  min-width: 285px;  
+}
+.f-dropdown li{
+  text-align: left;
+}
