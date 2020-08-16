@@ -1,0 +1,312 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast Form | Disaster Relief</title>
+
+    
+  
+
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsbzoLjGocnaRHZF3IBMFVI-X41vPl6qM&sensor=true&libraries=geometry"></script>
+    <style>
+      /* Set the size of the div element that contains the map */
+     #map {
+       height: 400px;  /* The height is 400 pixels */
+       width: 100%;  /* The width is the width of the web page */
+      }
+     
+          .dropbtn {
+            background-color: #000000;
+            color: white;
+            padding: 18px;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+          }
+
+          .dropbtn:hover, .dropbtn:focus {
+            background-color: #2980B9;
+          }
+
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+          }
+
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+
+          .dropdown a:hover {background-color: #ddd;}
+
+          .show {display: block;}
+
+   </style>
+  </head>
+    <body>
+    
+
+ <div class="row">
+    <div class="large-12 columns">
+ 
+      <!-- Navigation -->
+ 
+        <ul class="button-group">
+
+          <li><a href="C:\Users\nelak\Desktop\EHack for Charity\adminlogin.html">Admin Login</a></li>
+          
+        </ul>
+ 
+      <!-- End Navigation -->
+ 
+      <!-- Header Content -->
+ 
+        <div class="row panel header">
+          <div class="large-2 columns">
+            <img src="image001.png">
+          </div>
+          <div class="large-10 columns">
+            <p>Fast Form</p>
+            <h2> To Streamline the Disaster Relief Process</h2>
+          </div>
+          
+        </div>
+ 
+      <!-- End Header Content -->
+ 
+      <p id="demo"></p>
+     
+      <script>
+
+
+                    
+          var x = document.getElementById("demo");
+
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+          }
+
+          function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+          }
+
+          function showError(error) {
+            switch(error.code) {
+              case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+              case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+              case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+              case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+            }
+          }              
+
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+        }
+
+                    // Initialize and add the map
+                    function initMap() {
+                      // The location of Uluru
+                      var uluru = {lat: -25.344, lng: 131.036};
+                      var coo = {lat: 40.205326899999996, lng: -82.9917353};
+                      // The map, centered at Uluru
+                      var map = new google.maps.Map(
+                          document.getElementById('map'), {zoom: 4, center: uluru});
+                      // The marker, positioned at Uluru
+                    
+                      var marker = new google.maps.Marker({position: coo, map: map});
+                    }
+                        </script>
+                        <!--Load the API from the specified URL
+                        * The async attribute allows the browser to render the page while the API loads
+                        * The key parameter will contain your own API key (which is not needed for this tutorial)
+                        * The callback parameter executes the initMap() function
+                        -->
+                        <script defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfm6J3LKQPpVjjdC6qxk0ErpYEKwChTPc&callback=initMap">
+</script>
+
+ 
+          <div class="row"> 
+            <div class="large-12 columns">
+              <div class="radius panel">
+                <div id="maparea">
+                  <div id="map"></div>
+                  
+                        
+                </div>            
+            </div> 
+            </div>
+          </div>
+     
+ 
+    </div>
+  </div>
+    <!-- Steps -->
+      
+    <div class="row steps">
+   
+      <div class="large-3 small-12 columns">
+        <ul class="pricing-table">
+          <li class="title step1"><span class="step">1</span> Locate</li>
+          <li class="description">Get your current location</li>
+          <li class="cta-button"><button onclick="getLocation()">Locate Me</button></li>
+        </ul>
+      </div>
+      
+      <div class="large-3 small-12 columns">
+        <ul class="pricing-table">
+          <li class="title step2"><span class="step">2</span> Center</li>
+          <li class="description">Choose an Shelter</li>
+          <li class="cta-button">                
+            <button onclick="myFunction()" class="dropbtn">Choose</button>
+            
+              <div id="myDropdown" class="dropdown-content">
+                <a href="#">Willy Wonka's Chocolate Factory</a>
+                <a href="#">Cat Palace</a>
+                <a href="#">GYM of Dogs</a>
+
+          </li>
+        </ul>
+      </div>
+
+     
+      <div class="large-3 small-12 columns">
+        <ul class="pricing-table">
+          <li class="title step3"><span class="step">3</span> Form</li>
+          <li class="description">Fill out a Form</li>
+          <li class="cta-button"><a class="typeform-share button" id="start-form" href="https://percyjackson2024.typeform.com/to/gRLY7i3s" data-mode="1" target="_self">Get Started</a></li>
+        </ul>
+      </div>
+
+      <div class="large-3 small-12 columns">
+        <ul class="pricing-table">
+          <li class="title step4"><span class="step">4</span> Status</li>
+          <li class="description">Track Your Status</li>
+          <li class="cta-button"><a class="button" href="tract_status.html">Track</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- End Steps -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../js/foundation.min.js"></script>
+    <script src="js/jquery.geolocation.js"></script>
+    
+    <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href=b+'share-button.css';s=gt.call(d,'head')[0];}})()</script>
+    <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href=b+'share-button.css';s=gt.call(d,'head')[0];}})()</script>
+
+    <script type="text/javascript">
+    var form_href = '#';
+    var loc = '';
+    var center = '';
+    var center_list = <?=json_encode($centers_json->centers);?>;
+    $(document).ready(function () {
+    
+    locate();
+
+    $('#locate').on('click',function(){
+      locate();
+    });
+
+    $('#center li').on('click',function(){
+      $('.step2 span').addClass('done');
+      center = $(this).data('center');   
+      $('#start-form').attr('href',form_href+'?location='+loc+'&center='+center);
+    });
+
+    function locate(){
+      $.geolocation(function (lat, lng) {
+          loc=lat+','+lng;
+
+          var myLatlng = new google.maps.LatLng(lat, lng);
+          var mapOptions = {
+              center: new google.maps.LatLng(lat, lng),
+              zoom: 4
+          };
+          var map = new google.maps.Map(document.getElementById("maparea"), mapOptions);
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              icon: '/images/user.png'
+          });
+
+          // $.each(center_list,function(k,v){
+          //   var from = new google.maps.LatLng(lat,lng);
+          //   var to   = new google.maps.LatLng(v.lat,v.lng);
+          //   var dist = google.maps.geometry.spherical.computeDistanceBetween(from, to);
+          //   $('#'+v.id).html($('#'+v.id).html()+' '+dist);
+          // });
+
+          <? foreach ($centers_json->centers as $c) {?>
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(<?=$c->lat.','.$c->lng?>),
+              map: map,
+              icon: '/images/center.png',
+              title: "<?=$c->name?>"
+            });     
+            
+          <? } ?>
+
+          $('#start-form').attr('href',form_href+'?location='+loc+'&center='+center);
+          $('#start-form').removeClass('hide');
+
+          $('.step1 span').addClass('done');
+      });
+    }
+});
+
+    </script>
+    
+    <script>
+      $(document).foundation();      
+    </script>
+  </body>
+</html>
